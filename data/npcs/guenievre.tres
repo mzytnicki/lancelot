@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cfsvxfsey4mrl"]
+
+[ext_resource type="Script" uid="uid://tic3kyqnv4as" path="res://resources/character_data.gd" id="1_rrj6q"]
+
+[resource]
+script = ExtResource("1_rrj6q")
+id = "guenievre"
+display_name = "Guenièvre"
+metadata/_custom_type_script = "uid://tic3kyqnv4as"

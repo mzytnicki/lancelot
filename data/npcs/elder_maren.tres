@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://brydidd3nj5yq"]
+
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="1_eosr3"]
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_oil24"]
+
+[sub_resource type="Resource" id="Resource_m43jp"]
+script = ExtResource("1_oil24")
+speaker_name = "Elder Maren"
+text = "The crystals have grown restless."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_pxno6"]
+script = ExtResource("1_oil24")
+speaker_name = "Elder Maren"
+text = "If you are brave, seek the old cavern beyond Whisperwood."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[resource]
+script = ExtResource("1_eosr3")
+id = "elder_maren"
+display_name = "Elder Maren"
+dialogue = Array[ExtResource("1_oil24")]([SubResource("Resource_m43jp"), SubResource("Resource_pxno6")])
+metadata/_custom_type_script = "uid://darqqnngkoaay"

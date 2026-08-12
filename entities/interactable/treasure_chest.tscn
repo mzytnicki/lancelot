@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfwdvdctds1gb"]
+
+[ext_resource type="Script" uid="uid://dckcp06o7pxpq" path="res://entities/interactable/treasure_chest.gd" id="1_kel7b"]
+[ext_resource type="Texture2D" uid="uid://wyiav1h1xth2" path="res://entities/interactable/treasure_chest.png" id="2_dcyci"]
+[ext_resource type="Resource" uid="uid://dqku4sa6nhpck" path="res://data/items/pendant.tres" id="2_urqdn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(24, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jawyf"]
+size = Vector2(34, 28)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqkrr"]
+font_size = 12
+
+[node name="TreasureChest" type="StaticBody2D" unique_id=2119571380]
+script = ExtResource("1_kel7b")
+item = ExtResource("2_urqdn")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1470484752]
+texture = ExtResource("2_dcyci")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=172406166]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=1319826686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1840546962]
+shape = SubResource("RectangleShape2D_jawyf")
+
+[node name="InteractionPrompt" type="Label" parent="." unique_id=1273568481]
+offset_left = -1.0
+offset_top = -19.0
+offset_right = 3.0
+offset_bottom = -2.0
+text = "!"
+label_settings = SubResource("LabelSettings_dqkrr")

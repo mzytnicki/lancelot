@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b6c64ggyeaiyk"]
+
+[node name="QuestLog" type="PanelContainer" unique_id=518570765]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1240898810]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1359678417]
+layout_mode = 2
+
+[node name="QuestList" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=722122762]
+layout_mode = 2
+
+[node name="DetailLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1514529655]
+layout_mode = 2
+bbcode_enabled = true

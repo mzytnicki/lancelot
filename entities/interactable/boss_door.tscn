@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b4bwgj8cef6oa"]
+
+[ext_resource type="Script" uid="uid://c7xe71j2aljit" path="res://entities/interactable/boss_door.gd" id="1_uvf88"]
+[ext_resource type="Texture2D" uid="uid://8c7dmnwigr2l" path="res://entities/interactable/boss_door.png" id="2_uvf88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(24, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jawyf"]
+size = Vector2(34, 28)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqkrr"]
+font_size = 12
+
+[node name="BossDoor" type="StaticBody2D" unique_id=2119571380]
+script = ExtResource("1_uvf88")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1470484752]
+scale = Vector2(2, 2)
+texture = ExtResource("2_uvf88")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=172406166]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="InteractionZone" type="Area2D" parent="." unique_id=1319826686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1840546962]
+shape = SubResource("RectangleShape2D_jawyf")
+
+[node name="InteractionPrompt" type="Label" parent="." unique_id=1273568481]
+offset_left = -1.0
+offset_top = -19.0
+offset_right = 3.0
+offset_bottom = -2.0
+text = "!"
+label_settings = SubResource("LabelSettings_dqkrr")

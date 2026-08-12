@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://bm0w5cdpyoif6"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_ilxti"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_exrqs"]
+[ext_resource type="SpriteFrames" uid="uid://c3im0jwo2st7t" path="res://data/npcs/lira_frames.tres" id="3_exrqs"]
+
+[resource]
+script = ExtResource("2_exrqs")
+id = "lira"
+display_name = "Lira"
+sprite_frames = ExtResource("3_exrqs")
+metadata/_custom_type_script = "uid://darqqnngkoaay"

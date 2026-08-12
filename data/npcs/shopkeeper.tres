@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://b1kbmeqoyx0jn"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_avqye"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="1_qwchp"]
+
+[sub_resource type="Resource" id="Resource_mo6my"]
+script = ExtResource("1_avqye")
+speaker_name = "Merchant Hilda"
+text = "Welcome to my shop!"
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_prx0a"]
+script = ExtResource("1_avqye")
+speaker_name = "Merchant Hilda"
+text = "I have potions and gear for sale."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_f22aa"]
+script = ExtResource("1_avqye")
+speaker_name = "Merchant Hilda"
+text = "Be careful in those woods."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[resource]
+script = ExtResource("1_qwchp")
+id = "shopkeeper"
+display_name = "Merchant Hilda"
+dialogue = Array[ExtResource("1_avqye")]([SubResource("Resource_mo6my"), SubResource("Resource_prx0a"), SubResource("Resource_f22aa")])
+metadata/_custom_type_script = "uid://darqqnngkoaay"

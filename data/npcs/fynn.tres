@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://cqvmpaofv2ofi"]
+
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="1_1kibi"]
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_y2h1r"]
+
+[sub_resource type="Resource" id="Resource_8uaoa"]
+script = ExtResource("1_y2h1r")
+speaker_name = "Wandering Fynn"
+text = "I lost something precious in the Whisperwood..."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_li7gn"]
+script = ExtResource("1_y2h1r")
+speaker_name = "Wandering Fynn"
+text = "A pendant, silver with a blue stone."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_q8j1u"]
+script = ExtResource("1_y2h1r")
+speaker_name = "Wandering Fynn"
+text = "If you find it, I'd be forever grateful."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[resource]
+script = ExtResource("1_1kibi")
+id = "fynn"
+display_name = "Wandering Fynn"
+facing_direction = Vector2(-1, 0)
+dialogue = Array[ExtResource("1_y2h1r")]([SubResource("Resource_8uaoa"), SubResource("Resource_li7gn"), SubResource("Resource_q8j1u")])
+metadata/_custom_type_script = "uid://darqqnngkoaay"

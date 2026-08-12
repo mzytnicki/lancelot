@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://k5qvvxwj3o5f"]
+
+[ext_resource type="Script" uid="uid://do4h44doe7x7e" path="res://resources/enemy_data.gd" id="1_22h4u"]
+[ext_resource type="Resource" uid="uid://ckojr806po2cj" path="res://data/items/potion.tres" id="1_ovpn7"]
+[ext_resource type="Texture2D" uid="uid://civadss445uju" path="res://data/enemies/cave_bat.png" id="2_qk46i"]
+
+[resource]
+script = ExtResource("1_22h4u")
+id = "crystal_slime"
+display_name = "Crystal Slime"
+sprite = ExtResource("2_qk46i")
+max_hp = 35
+defense = 5
+speed = 4
+xp_reward = 12
+gold_reward = 6
+drop_item = ExtResource("1_ovpn7")
+metadata/_custom_type_script = "uid://do4h44doe7x7e"

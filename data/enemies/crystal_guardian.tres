@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cwyq20ndj2rdq"]
+
+[ext_resource type="Script" uid="uid://do4h44doe7x7e" path="res://resources/enemy_data.gd" id="1_7ntvx"]
+[ext_resource type="Texture2D" uid="uid://oycrlr88ob2f" path="res://data/enemies/crystal_guardian.png" id="2_bgg57"]
+
+[resource]
+script = ExtResource("1_7ntvx")
+id = "crystal_guardian"
+display_name = "Crystal Guardian"
+sprite = ExtResource("2_bgg57")
+ai_type = 0
+max_hp = 200
+attack = 15
+defense = 8
+speed = 6
+xp_reward = 100
+gold_reward = 50
+metadata/_custom_type_script = "uid://do4h44doe7x7e"

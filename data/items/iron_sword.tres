@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b4lfaqam8m4fu"]
+
+[ext_resource type="Texture2D" uid="uid://d0oql3t3mk2p8" path="res://icon.svg" id="1_d3ohw"]
+[ext_resource type="Script" uid="uid://mg8tk7axu2c" path="res://resources/item_data.gd" id="1_r8v42"]
+
+[resource]
+script = ExtResource("1_r8v42")
+id = "iron_sword"
+display_name = "Iron Sword"
+description = "A sword for rookies."
+icon = ExtResource("1_d3ohw")
+item_type = 1
+equip_slot = 1
+attack_bonus = 3
+buy_price = 60
+sell_price = 20
+metadata/_custom_type_script = "uid://mg8tk7axu2c"

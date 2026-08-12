@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://bfq784c3i0pjm"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_abx62"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="1_nc6aw"]
+
+[sub_resource type="Resource" id="Resource_awuxq"]
+script = ExtResource("1_abx62")
+speaker_name = "Old Brennan"
+text = "Need a rest? 10 gold for a night."
+choices = Array[String](["Yes", "No"])
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[sub_resource type="Resource" id="Resource_t7xp5"]
+script = ExtResource("1_abx62")
+speaker_name = "Old Brennan"
+text = "You look like you've seen some trouble."
+metadata/_custom_type_script = "uid://bg5xnupa8tknt"
+
+[resource]
+script = ExtResource("1_nc6aw")
+id = "innkeeper"
+display_name = "Old Brennan"
+dialogue = Array[ExtResource("1_abx62")]([SubResource("Resource_awuxq"), SubResource("Resource_t7xp5")])
+metadata/_custom_type_script = "uid://darqqnngkoaay"

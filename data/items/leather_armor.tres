@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://fo2aby71yfra"]
+
+[ext_resource type="Script" uid="uid://mg8tk7axu2c" path="res://resources/item_data.gd" id="1_bxfgr"]
+[ext_resource type="Texture2D" uid="uid://d0oql3t3mk2p8" path="res://icon.svg" id="1_wrxkd"]
+
+[resource]
+script = ExtResource("1_bxfgr")
+id = "leather_armor"
+display_name = "Leather Armor"
+description = "Light protection for the road ahead."
+icon = ExtResource("1_wrxkd")
+item_type = 1
+equip_slot = 2
+defense_bonus = 3
+buy_price = 80
+sell_price = 30
+metadata/_custom_type_script = "uid://mg8tk7axu2c"

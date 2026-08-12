@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://c5uoa4p48rcc0"]
+
+[ext_resource type="Script" uid="uid://mg8tk7axu2c" path="res://resources/item_data.gd" id="1_xnpql"]
+[ext_resource type="Resource" uid="uid://we5gjin0crec" path="res://data/items/ether.tres" id="2_lyw8s"]
+[ext_resource type="Script" uid="uid://cal0qaohwi7me" path="res://resources/quest_data.gd" id="2_v47ps"]
+
+[resource]
+script = ExtResource("2_v47ps")
+id = "lost_pendant"
+title = "The Lost Pendant"
+description = "Find Fynn's pendant in the Whisperwood."
+objectives = Array[String](["Talk to Wandering Fynn", "Find the pendant in Whisperwood"])
+objective_flags = Array[String](["talked_to_fynn", "pendant_found"])
+xp_reward = 50
+gold_reward = 30
+reward_items = Array[ExtResource("1_xnpql")]([ExtResource("2_lyw8s"), ExtResource("2_lyw8s")])
+completion_flag = "pendant_returned"
+metadata/_custom_type_script = "uid://cal0qaohwi7me"
