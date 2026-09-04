@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://jt0ih28qpsr3"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_yq02j"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_rkxb6"]
+[ext_resource type="SpriteFrames" uid="uid://dd42movp4t50m" path="res://data/npcs/gauvain_noarmor/sprite_frames.tres" id="3_rkxb6"]
+
+[resource]
+script = ExtResource("2_rkxb6")
+id = "gauvain_noarmor"
+display_name = "Gauvain"
+sprite_frames = ExtResource("3_rkxb6")
+metadata/_custom_type_script = "uid://darqqnngkoaay"

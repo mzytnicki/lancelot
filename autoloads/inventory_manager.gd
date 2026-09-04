@@ -101,3 +101,39 @@ func spend_gold(amount: int) -> bool:
 		gold_changed.emit(gold)
 		return true
 	return false
+
+
+func use_item_on_member(item: ItemData, member: CharacterData) -> bool:
+	if not item or not member:
+		return false
+	if item.item_type != ItemData.ItemType.CONSUMABLE:
+		return false
+	if item.hp_restore <= 0 and item.mp_restore <= 0:
+		return false
+	if not remove_item(item):
+		return false
+
+	member.current_hp = min(member.current_hp + item.hp_restore, member.max_hp)
+	member.current_mp = min(member.current_mp + item.mp_restore, member.max_mp)
+	return true
+
+
+func to_save_data() -> Dictionary:
+	var items_data: Array[Dictionary] = []
+	for entry in _items:
+		items_data.append({
+			item_id = entry.item.id,
+			item_path = entry.item.resource_path,
+			count = entry.count,
+		})
+	return {gold = gold, items = items_data}
+
+func from_save_data(data: Dictionary) -> void:
+	gold = int(data.get("gold", 0))
+	_items.clear()
+	for entry in data.get("items", []):
+		var item: ItemData = load(entry.item_path) as ItemData
+		if item:
+			_items.append({item = item, count = int(entry.get("count", 1))})
+	inventory_changed.emit()
+	gold_changed.emit(gold)

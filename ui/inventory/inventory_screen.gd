@@ -78,13 +78,9 @@ func _on_slot_activated(item: ItemData) -> void:
 
 
 func _use_consumable(item: ItemData) -> void:
-	# Temporary Module 12 behavior: no party target exists yet.
-	# Module 21 replaces this with use_item_on_member(item, member).
-	if item.hp_restore > 0:
-		print("Restored ", item.hp_restore, " HP!")
-	if item.mp_restore > 0:
-		print("Restored ", item.mp_restore, " MP!")
-	InventoryManager.use_item(item)
+	if PartyManager.get_members().is_empty():
+		return
+	InventoryManager.use_item_on_member(item, PartyManager.get_members()[0])
 
 
 func _update_gold_display() -> void:

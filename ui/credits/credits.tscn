@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dw0ivgd0ih6o8"]
+
+[ext_resource type="Script" uid="uid://b03n71cei3dcr" path="res://ui/credits/credits.gd" id="1_ydyd3"]
+
+[node name="Credits" type="Control" unique_id=626234311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydyd3")
+
+[node name="CreditsLabel" type="Label" parent="." unique_id=1753075036]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1

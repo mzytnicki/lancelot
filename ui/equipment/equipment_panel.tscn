@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://xpq4nojei3yk"]
+
+[node name="EquipmentPanel" type="PanelContainer" unique_id=919279685]
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1414967409]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBox" unique_id=2047060977]
+layout_mode = 2
+
+[node name="StatsLabel" type="RichTextLabel" parent="VBox" unique_id=529737963]
+layout_mode = 2
+
+[node name="Slots" type="VBoxContainer" parent="VBox" unique_id=1416865799]
+layout_mode = 2
+
+[node name="WeaponButton" type="Button" parent="VBox/Slots" unique_id=1979778759]
+layout_mode = 2
+text = "Weapon: None"
+
+[node name="ArmorButton" type="Button" parent="VBox/Slots" unique_id=2115931123]
+layout_mode = 2
+text = "Armor: None"
+
+[node name="AccessoryButton" type="Button" parent="VBox/Slots" unique_id=604143829]
+layout_mode = 2
+text = "Accessory: None"

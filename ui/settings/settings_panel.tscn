@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cbxto4s7i5gn8"]
+
+[ext_resource type="Script" uid="uid://dlgwp6ixcb1ap" path="res://ui/settings/settings_panel.gd" id="1_omfqp"]
+
+[node name="SettingsPanel" type="PanelContainer" unique_id=948956399]
+script = ExtResource("1_omfqp")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=928168340]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="VBox" unique_id=1039309727]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="VBox" unique_id=1351890449]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="VBox" unique_id=1830304124]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="VBox" unique_id=687295250]
+layout_mode = 2

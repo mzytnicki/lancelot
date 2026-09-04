@@ -5,7 +5,7 @@ extends Node
 signal transition_started
 signal transition_finished
 
-@onready var _color_rect: ColorRect = $TransitionLayer/ColorRect
+# @onready var _color_rect: ColorRect = $TransitionLayer/ColorRect
 @onready var _anim_player: AnimationPlayer = $TransitionLayer/AnimationPlayer
 
 var _target_scene_path: String = ""
@@ -84,6 +84,9 @@ func start_battle(party_data: Array[BattlerData], enemy_data: Array[BattlerData]
 
 	get_tree().change_scene_to_file("res://scenes/battle/battle.tscn")
 	await get_tree().scene_changed
+	
+	MusicManager.remember_track()
+	MusicManager.play_music("res://audio/music/battle_theme.mp3")
 
 	# Initialize the battle with encounter data
 	var battle_scene := get_tree().current_scene
@@ -110,3 +113,5 @@ func return_from_battle() -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player:
 		player.global_position = _previous_player_position
+		
+	MusicManager.resume_previous_track()

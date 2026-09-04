@@ -40,6 +40,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			_advance()
 
 
+func _make_lines(speaker: String, texts: Array) -> Array[DialogueLine]:
+	var lines: Array[DialogueLine] = []
+	for text in texts:
+		var line := DialogueLine.new()
+		line.speaker_name = speaker
+		line.text = text
+		lines.append(line)
+	return lines
+
+
+func start_dialogue_lines(speaker: String, texts: Array) -> void:
+	start_dialogue(_make_lines(speaker, texts))
+
+
 func start_dialogue(lines: Array[DialogueLine]) -> void:
 	if lines.is_empty():
 		return

@@ -2,12 +2,21 @@ extends CharacterBody2D
 class_name NPC
 ## A non-player character that can be interacted with.
 
+enum State { IDLE, WALK, ANIMATION, INTERACT, DISABLED }
+
 signal interacted(npc: NPC)
+signal walk_done
+
 
 @export var npc_data: NPCData
 @export var speed: float = 200.0
 
-var _player_in_range: bool = false
+var _current_state:    State   = State.IDLE
+var _player_in_range:  bool    = false
+var _target:           Vector2 = Vector2.ZERO
+var _facing_direction: Vector2 = Vector2.DOWN  # Vector2(0, 1), positive Y is downward in Godot
+var _track_end:        bool    = true
+
 
 @onready var _sprite: AnimatedSprite2D = $Sprite
 @onready var _interaction_prompt: Label = $InteractionPrompt
@@ -21,6 +30,45 @@ func _ready() -> void:
 
 	if npc_data:
 		_apply_npc_data()
+
+
+func _physics_process(_delta: float) -> void:
+	match _current_state:
+		State.IDLE:
+			_state_idle()
+		State.WALK:
+			_state_walk()
+
+
+
+func _change_state(new_state: State) -> void:
+	_current_state = new_state
+
+
+func disable() -> void:
+	_change_state(State.DISABLED)
+
+
+func _state_idle() -> void:
+	velocity = Vector2.ZERO
+	_play_animation("idle")
+
+
+func _state_walk() -> void:
+	var direction: Vector2 = _sprite.global_position.direction_to(_target)
+	var distance: float = _sprite.global_position.distance_to(_target)
+
+	if distance <= 5:
+		_change_state(State.IDLE)
+		if _track_end:
+			_track_end = false
+			walk_done.emit()
+		return
+
+	_facing_direction = direction
+	velocity = direction.normalized() * speed
+	_play_animation("walk")
+	move_and_slide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -38,6 +86,7 @@ func _apply_npc_data() -> void:
 		_sprite.sprite_frames = npc_data.sprite_frames
 
 	# Set initial facing direction
+	_facing_direction = npc_data.facing_direction
 	var dir_name := _direction_to_string(npc_data.facing_direction)
 	var idle_anim := "idle_" + dir_name
 	if _sprite.sprite_frames and _sprite.sprite_frames.has_animation(idle_anim):
@@ -49,8 +98,11 @@ func _face_player() -> void:
 	if not player:
 		return
 
-	var direction: Vector2 = (player.global_position - global_position).normalized()
-	var dir_name := _direction_to_string(direction)
+	_face_something(player.global_position)
+
+
+func _face_something(direction: Vector2) -> void:
+	var dir_name := _direction_to_string(direction - _sprite.global_position)
 	var idle_anim := "idle_" + dir_name
 	if _sprite.sprite_frames and _sprite.sprite_frames.has_animation(idle_anim):
 		_sprite.play(idle_anim)
@@ -90,10 +142,32 @@ func _direction_from_string(direction: String) -> Vector2:
 			return Vector2.ZERO
 
 
-func walk(direction: String) -> void:
-	var anim_name := "walk_" + direction
+func _play_animation(action: String) -> void:
+	var direction_name := _direction_to_string(_facing_direction)
+	var anim_name := action + "_" + direction_name
+	play_animation(anim_name)
+
+
+func play_animation(anime_name: String, idle: bool = false) -> void:
+	if _sprite.sprite_frames.has_animation(anime_name):
+		if idle:
+			_change_state(State.ANIMATION)
+		_sprite.play(anime_name)
+	else:
+		push_error("Cannot find animation ", anime_name)
+
+
+func surprise() -> void:
+	play_animation("surprise", true)
+#	walk_done.emit()
+
+
+func go_to(direction: String, distance: int, track: bool) -> void:
+	var original_pos: Vector2 = _sprite.global_position
 	var direction_float := _direction_from_string(direction)
-	velocity = direction_float.normalized() * speed
-	if _sprite.sprite_frames.has_animation(anim_name):
-		_sprite.play(anim_name)
-	move_and_slide()
+	_target = original_pos + direction_float * distance
+	_track_end = track
+	_face_something(_target)
+	_change_state(State.WALK)
+	if track:
+		await walk_done

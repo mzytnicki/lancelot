@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://by5er815oesyh"]
+
+[ext_resource type="Script" uid="uid://b2jseyvoireku" path="res://ui/save_slot_dialog/save_slot_dialog.gd" id="1_843a3"]
+
+[node name="SaveSlotDialog" type="CanvasLayer" unique_id=1333411952]
+script = ExtResource("1_843a3")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1928455295]
+offset_right = 104.0
+offset_bottom = 94.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1927220871]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBox" unique_id=1850531772]
+layout_mode = 2
+text = "Choose a Slot"
+
+[node name="Slot1Button" type="Button" parent="Panel/VBox" unique_id=1282976888]
+layout_mode = 2
+
+[node name="Slot2Button" type="Button" parent="Panel/VBox" unique_id=754650447]
+layout_mode = 2
+
+[node name="Slot3Button" type="Button" parent="Panel/VBox" unique_id=356373801]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="Panel/VBox" unique_id=1742096638]
+layout_mode = 2
+text = "Cancel"

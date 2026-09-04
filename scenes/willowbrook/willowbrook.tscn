@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://bm0w5cdpyoif6" path="res://data/npcs/lira.tres" id="9_q8j1u"]
 [ext_resource type="PackedScene" uid="uid://jtv64ucom4et" path="res://ui/inventory/inventory_screen.tscn" id="11_8uaoa"]
 [ext_resource type="PackedScene" uid="uid://b6c64ggyeaiyk" path="res://ui/quest_log/quest_log.tscn" id="12_li7gn"]
+[ext_resource type="PackedScene" uid="uid://xpq4nojei3yk" path="res://ui/equipment/equipment_panel.tscn" id="14_nimmg"]
+[ext_resource type="PackedScene" uid="uid://djs20meenyges" path="res://ui/shop/shop_ui.tscn" id="15_fcsqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpyqm"]
 size = Vector2(27, 27)
@@ -80,6 +82,11 @@ position = Vector2(160, 303)
 
 [node name="DialogueBox" parent="." unique_id=757804912 instance=ExtResource("9_pxno6")]
 
-[node name="InventoryScreen" parent="." unique_id=1701268914 instance=ExtResource("11_8uaoa")]
+[node name="InventoryScreen" parent="." unique_id=1701268914 groups=["inventory_screens"] instance=ExtResource("11_8uaoa")]
 
-[node name="QuestLog" parent="." unique_id=518570765 instance=ExtResource("12_li7gn")]
+[node name="QuestLog" parent="." unique_id=518570765 groups=["quest_logs"] instance=ExtResource("12_li7gn")]
+
+[node name="EquipmentPanel" parent="." unique_id=919279685 groups=["equipment_panels"] instance=ExtResource("14_nimmg")]
+visible = false
+
+[node name="ShopUI" parent="." unique_id=2018153369 instance=ExtResource("15_fcsqp")]

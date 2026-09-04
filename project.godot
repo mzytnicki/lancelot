@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="CrystalSaga"
-run/main_scene="uid://cml1wqnt32ard"
+run/main_scene="uid://mahcglst3xx7"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bmb4hwiief1ww"
 
 [autoload]
 
@@ -22,6 +26,9 @@ InventoryManager="*uid://wwh2ceyxigo3"
 GameManager="*uid://vce8dd4s4i1l"
 QuestManager="*uid://c48kfv3ul43qt"
 PartyManager="*uid://cu0byhydimpt2"
+SaveManager="*uid://bajrot7l8vg84"
+MusicManager="*uid://dt2gtnbyrnp0k"
+PauseMenu="*uid://b3ycikvucnydc"
 
 [display]
 
@@ -36,6 +43,12 @@ window/stretch/aspect="expand"
 spawn_points=""
 player=""
 npcs=""
+equipment_panels=""
+inventory_screens=""
+quest_logs=""
+pause_allowed=""
+bar_screens=""
+grounds=""
 
 [input]
 

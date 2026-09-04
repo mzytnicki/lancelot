@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b6c64ggyeaiyk"]
 
 [node name="QuestLog" type="PanelContainer" unique_id=518570765]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1240898810]
 layout_mode = 2

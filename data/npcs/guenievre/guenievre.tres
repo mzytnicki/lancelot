@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://rff7j8s887pe"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_1we8j"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_3clrp"]
+[ext_resource type="SpriteFrames" uid="uid://bjqa8arextcgh" path="res://data/npcs/guenievre/sprite_frames.tres" id="3_3clrp"]
+
+[resource]
+script = ExtResource("2_3clrp")
+id = "guenievre"
+display_name = "Guenièvre"
+sprite_frames = ExtResource("3_3clrp")
+facing_direction = Vector2(-1, 0)
+metadata/_custom_type_script = "uid://darqqnngkoaay"

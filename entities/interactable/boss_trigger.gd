@@ -41,10 +41,14 @@ func _start_boss_battle() -> void:
 		push_error("BossTrigger: boss_data is not assigned. Drag a crystal_guardian.tres into the Boss Data field.")
 		return
 
-	var hero := BattlerData.new()
-	hero.character_data = load("res://data/characters/aiden.tres")
-	hero.is_player_controlled = true
+	# Build party BattlerData from PartyManager
+	var party_battlers: Array[BattlerData] = []
+	for char_data in PartyManager.get_members():
+		var battler := BattlerData.new()
+		battler.character_data = char_data
+		battler.is_player_controlled = true
+		party_battlers.append(battler)
 
+	# Use the full party instead of just [hero]
 	var boss := BattlerData.from_enemy(boss_data)
-
-	SceneManager.start_battle([hero], [boss])
+	SceneManager.start_battle(party_battlers, [boss])

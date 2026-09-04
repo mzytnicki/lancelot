@@ -62,10 +62,11 @@ size = Vector2(44, 44)
 
 [node name="NPC" type="CharacterBody2D" unique_id=1925381520]
 script = ExtResource("1_cqejd")
+speed = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=571710536]
 sprite_frames = SubResource("SpriteFrames_aeyep")
-animation = &"idle_down"
+animation = &"idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2089239712]
 position = Vector2(0, 11.5)

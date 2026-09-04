@@ -35,3 +35,10 @@ func get_all_flags() -> Dictionary:
 
 func load_flags(data: Dictionary) -> void:
 	_flags = data.duplicate()
+
+
+func to_save_data() -> Dictionary:
+	return _flags.duplicate()
+
+func from_save_data(data: Dictionary) -> void:
+	_flags = data.duplicate()

@@ -86,7 +86,7 @@ func get_turned_in_quests() -> Array[QuestData]:
 	return _turned_in_quests.duplicate()
 
 
-func _on_flag_changed(flag_name: String, _value: bool) -> void:
+func _on_flag_changed(_flag_name: String, _value: bool) -> void:
 	# Check if any active quest's objectives are now all met
 	# Collect completed quests first; don't modify the array during iteration
 	var newly_completed: Array[QuestData] = []
@@ -112,3 +112,25 @@ func _is_quest_active(quest_id: String) -> bool:
 
 func _is_quest_done(quest_id: String) -> bool:
 	return _turned_in_quests.any(func(q: QuestData) -> bool: return q.id == quest_id)
+
+
+func to_save_data() -> Dictionary:
+	return {
+		active = _active_quests.map(func(q: QuestData) -> String: return q.resource_path),
+		completed = _completed_quests.map(func(q: QuestData) -> String: return q.resource_path),
+		turned_in = _turned_in_quests.map(func(q: QuestData) -> String: return q.resource_path),
+	}
+
+func from_save_data(data: Dictionary) -> void:
+	_active_quests.clear()
+	_completed_quests.clear()
+	_turned_in_quests.clear()
+	for path in data.get("active", []):
+		var q: QuestData = load(path) as QuestData
+		if q: _active_quests.append(q)
+	for path in data.get("completed", []):
+		var q: QuestData = load(path) as QuestData
+		if q: _completed_quests.append(q)
+	for path in data.get("turned_in", []):
+		var q: QuestData = load(path) as QuestData
+		if q: _turned_in_quests.append(q)

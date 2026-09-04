@@ -10,6 +10,9 @@ class_name CharacterData
 @export_group("Base Stats")
 @export var max_hp: int = 100
 @export var max_mp: int = 20
+@export var max_prouesse: int = 100
+@export var max_amour: int = 100
+@export var max_courtoisie: int = 100
 @export var attack: int = 10
 @export var defense: int = 8
 @export var speed: int = 10
@@ -26,13 +29,23 @@ class_name CharacterData
 var current_xp: int = 0
 var current_hp: int = 0  # Tracks HP between battles
 var current_mp: int = 0  # Tracks MP between battles
+var current_prouesse: int = 100
+var current_amour: int = 100
+var current_courtoisie: int = 100
+
+var equipped_weapon: ItemData = null
+var equipped_armor: ItemData = null
+var equipped_accessory: ItemData = null
+
+
+signal hp_change(previous_hp, new_hp)
 
 
 # A static func belongs to the class itself, not an instance. Call it as
 # CharacterData.xp_for_level(5) without needing a CharacterData object.
 # Useful for utility calculations that don't depend on instance data.
-static func xp_for_level(level: int) -> int:
-	return level * level * 10
+static func xp_for_level(lev: int) -> int:
+	return lev * lev * 10
 
 
 func level_up() -> Dictionary:
@@ -71,3 +84,96 @@ func grant_xp(xp: int) -> Array[Dictionary]:
 		required = CharacterData.xp_for_level(level)
 
 	return level_ups
+
+
+func change_hp(xp: int) -> void:
+	hp_change.emit(current_hp, current_hp + xp)
+	current_hp = current_hp + xp
+
+
+func get_effective_attack() -> int:
+	var bonus: int = equipped_weapon.attack_bonus if equipped_weapon else 0
+	return attack + bonus
+
+
+func get_effective_defense() -> int:
+	var bonus: int = equipped_armor.defense_bonus if equipped_armor else 0
+	bonus += equipped_accessory.defense_bonus if equipped_accessory else 0
+	return defense + bonus
+
+
+func get_effective_speed() -> int:
+	var bonus: int = 0
+	if equipped_accessory:
+		bonus += equipped_accessory.speed_bonus
+	return speed + bonus
+
+
+func equip(item: ItemData) -> ItemData:
+	## Equips an item, returning the previously equipped item (or null).
+	var previous: ItemData = null
+	match item.equip_slot:
+		ItemData.EquipSlot.WEAPON:
+			previous = equipped_weapon
+			equipped_weapon = item
+		ItemData.EquipSlot.ARMOR:
+			previous = equipped_armor
+			equipped_armor = item
+		ItemData.EquipSlot.ACCESSORY:
+			previous = equipped_accessory
+			equipped_accessory = item
+	return previous
+
+
+func unequip(slot: ItemData.EquipSlot) -> ItemData:
+	var item: ItemData = null
+	match slot:
+		ItemData.EquipSlot.WEAPON:
+			item = equipped_weapon
+			equipped_weapon = null
+		ItemData.EquipSlot.ARMOR:
+			item = equipped_armor
+			equipped_armor = null
+		ItemData.EquipSlot.ACCESSORY:
+			item = equipped_accessory
+			equipped_accessory = null
+	return item
+
+
+func predict_equip(candidate: ItemData) -> Dictionary:
+	## Returns a stat diff: positive values = improvement, negative = worse.
+	## Does NOT modify the character.
+	var current_atk := get_effective_attack()
+	var current_def := get_effective_defense()
+	var current_spd := get_effective_speed()
+
+	# Temporarily swap
+	var slot := candidate.equip_slot
+	var old_item: ItemData = null
+	match slot:
+		ItemData.EquipSlot.WEAPON:
+			old_item = equipped_weapon
+			equipped_weapon = candidate
+		ItemData.EquipSlot.ARMOR:
+			old_item = equipped_armor
+			equipped_armor = candidate
+		ItemData.EquipSlot.ACCESSORY:
+			old_item = equipped_accessory
+			equipped_accessory = candidate
+
+	var diff := {
+		attack = get_effective_attack() - current_atk,
+		defense = get_effective_defense() - current_def,
+		speed = get_effective_speed() - current_spd,
+	}
+
+	# Restore original equipment
+	match slot:
+		ItemData.EquipSlot.WEAPON:
+			equipped_weapon = old_item
+		ItemData.EquipSlot.ARMOR:
+			equipped_armor = old_item
+		ItemData.EquipSlot.ACCESSORY:
+			equipped_accessory = old_item
+
+	return diff

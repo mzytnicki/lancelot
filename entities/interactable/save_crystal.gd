@@ -23,9 +23,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _activate() -> void:
-	# Module 22 will add actual saving here
-	print("Your progress has been saved!")
-	# Optional: heal the party at save points (common JRPG pattern)
+	var dialog: CanvasLayer = preload("res://ui/save_slot_dialog/save_slot_dialog.tscn").instantiate()
+	get_tree().current_scene.add_child(dialog)
+	var slot: int = await dialog.slot_selected
+	dialog.queue_free()
+	if slot == 0:
+		return
+	SaveManager.save_game(slot)
+	print("Saved to slot " + str(slot) + "!")
 
 
 func _on_body_entered(body: Node2D) -> void:

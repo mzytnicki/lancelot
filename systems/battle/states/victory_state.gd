@@ -5,6 +5,23 @@ extends BattleState
 
 func enter(_context: Dictionary = {}) -> void:
 	print("VICTORY")
+	
+	# Check if this was the final boss fight
+	var is_boss_fight: bool = false
+	for enemy in battle_manager.enemies:
+		if enemy.enemy_data and enemy.enemy_data.id.is_empty():
+			push_warning("EnemyData missing id: " + enemy.enemy_data.resource_path)
+		if enemy.enemy_data and enemy.enemy_data.id == "crystal_guardian":
+			is_boss_fight = true
+			break
+
+	if is_boss_fight:
+		battle_manager.sync_party_to_character_data()
+		GameManager.set_flag("boss_defeated")
+		GameManager.set_flag("world.crystal_cavern.crystal_guardian.defeated")
+		await get_tree().create_timer(2.0).timeout
+		SceneManager.change_scene("res://ui/ending/ending.tscn")
+		return  # Skip normal victory flow
 
 	var total_xp: int = 0
 	var total_gold: int = 0

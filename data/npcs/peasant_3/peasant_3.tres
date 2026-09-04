@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://c2ndx8eaqckpj"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_20jek"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_nu6ny"]
+[ext_resource type="SpriteFrames" uid="uid://cb4pmexjmat3k" path="res://data/npcs/peasant_3/sprite_frames.tres" id="3_nu6ny"]
+
+[resource]
+script = ExtResource("2_nu6ny")
+id = "peasant_3"
+display_name = "Paysan"
+sprite_frames = ExtResource("3_nu6ny")
+metadata/_custom_type_script = "uid://darqqnngkoaay"

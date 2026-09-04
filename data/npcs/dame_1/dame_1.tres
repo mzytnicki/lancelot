@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://cgjawe3f63c11"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_k2jcm"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_sl6ik"]
+[ext_resource type="SpriteFrames" uid="uid://cl6okur5pjn1r" path="res://data/npcs/dame_1/sprite_frames.tres" id="3_sl6ik"]
+
+[resource]
+script = ExtResource("2_sl6ik")
+id = "dame_1"
+display_name = "Dame"
+sprite_frames = ExtResource("3_sl6ik")
+metadata/_custom_type_script = "uid://darqqnngkoaay"

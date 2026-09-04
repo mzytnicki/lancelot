@@ -5,6 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicManager.play_music("res://audio/music/forest_theme.ogg")
 	GameManager.set_flag("reached_whisperwood")
 	_pendant_chest.opened.connect(_on_pendant_chest_opened)
 

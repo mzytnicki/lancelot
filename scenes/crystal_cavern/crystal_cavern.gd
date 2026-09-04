@@ -5,6 +5,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	MusicManager.play_music("res://audio/music/dungeon_theme.mp3")
 	GameManager.set_flag("entered_crystal_cavern")
 	_encounter_system.encounter_triggered.connect(_on_encounter_triggered)
 
@@ -15,10 +16,13 @@ func _on_encounter_triggered(encounter: EncounterData) -> void:
 	for ed in encounter.enemies:
 		enemy_battlers.append(BattlerData.from_enemy(ed))
 
-	# Build party (temporary, Module 21 adds a proper PartyManager)
-	var hero := BattlerData.new()
-	hero.character_data = load("res://data/characters/aiden.tres")
-	hero.is_player_controlled = true
+	# Build party BattlerData from PartyManager
+	var party_battlers: Array[BattlerData] = []
+	for char_data in PartyManager.get_members():
+		var battler := BattlerData.new()
+		battler.character_data = char_data
+		battler.is_player_controlled = true
+		party_battlers.append(battler)
 
-	# Must use Dictionary format, matches SceneManager.start_battle() from Module 14
-	SceneManager.start_battle([hero], enemy_battlers)
+	# Use the full party instead of just [hero]
+	SceneManager.start_battle(party_battlers, enemy_battlers)
