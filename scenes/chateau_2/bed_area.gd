@@ -15,21 +15,6 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-
-func _make_lines(speaker: String, texts: Array[String]) -> Array[DialogueLine]:
-	var lines: Array[DialogueLine] = []
-	for text in texts:
-		var line := DialogueLine.new()
-		line.speaker_name = speaker
-		line.text = text
-		lines.append(line)
-	return lines
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		_lancelot.start_interaction()
@@ -47,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		_lancelot.face_direction("down")
 		_lancelot.start_interaction()
-		var lines := _make_lines(
+		var lines := DialogueLine.make_lines(
 			"La Demoiselle", [
 				"Il est interdit à tout homme qui n'aurait pas mérité de s'y étendre.",
 				"Il ne peut être occupé que par un chevalier valereux.",
@@ -82,4 +67,5 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(0.5).timeout
 		_lancelot.face_direction("down")
 		_lancelot.start_interaction()
+		await get_tree().create_timer(1).timeout
 		SceneManager.change_scene("res://scenes/chateau_2/chateau_2.tscn", marker_string)

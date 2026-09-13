@@ -55,3 +55,5 @@ text = "Settings"
 [node name="VersionLabel" type="Label" parent="MenuContainer" unique_id=1257884907]
 layout_mode = 2
 text = "v1.0"
+
+[node name="default" type="Marker2D" parent="." unique_id=579072346 groups=["spawn_points"]]

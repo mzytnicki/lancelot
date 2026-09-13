@@ -10,17 +10,13 @@ class_name BarsScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_bar_prouesse.value = 10
-	_bar_amour.value = 10
-	_bar_courtoisie.value = 10
+	var char_data: CharacterData = PartyManager.get_member_by_id("lancelot")
+	_bar_prouesse.value   = char_data.current_prouesse
+	_bar_amour.value      = char_data.current_amour
+	_bar_courtoisie.value = char_data.current_courtoisie
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
-func set_value_to(type: String, to: int) -> void:
+func set_value(type: String, to: int, relative: bool = false) -> void:
 	var bar: ProgressBar
 	match type:
 		"prouesse":
@@ -33,4 +29,6 @@ func set_value_to(type: String, to: int) -> void:
 			push_error("Do not undestand type ", type)
 
 	var tween = create_tween()
+	if relative:
+		to = int(bar.value) + to
 	tween.tween_property(bar, "value", to, 0.2)

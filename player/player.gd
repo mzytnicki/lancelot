@@ -25,8 +25,16 @@ var target: Vector2 = Vector2.ZERO
 @onready var label_amour:      Label = $HBoxAmour/Label
 @onready var label_courtoisie: Label = $HBoxCourtoisie/Label
 
+
 func _ready() -> void:
 	set_camera_size()
+
+
+func change_sprites(sprite_name: String) -> void:
+	var new_sprites := ResourceLoader.load(
+		"res://player/" + sprite_name + "_sprite_frames.tres") as SpriteFrames
+	if new_sprites:
+		sprite.sprite_frames = new_sprites
 
 
 func set_camera_size() -> void:
@@ -122,6 +130,7 @@ func _direction_to_string(direction: Vector2) -> String:
 	else:
 		return "down" if direction.y >= 0 else "up"
 
+
 func _string_to_direction(direction: String) -> Vector2:
 	match direction:
 		"up":
@@ -164,8 +173,22 @@ func modify_data(type: String, amount: int, is_heal: bool = false) -> void:
 		values = _update_char_data(char_data, type, amount, is_heal)
 		original_value = values[0]
 		final_value = values[1]
+		if final_value == 0:
+			die()
+			return
 		_update_bars(type, final_value)
 		_spawn_damage_number(type, final_value - original_value)
+
+
+func die() -> void:
+	set_disabled(true)
+	await get_tree().create_timer(2).timeout
+	SceneManager.change_scene("res://scenes/dying/dying.tscn")
+
+
+func die_animation() -> void:
+	set_disabled(true)
+	sprite.play("dying")
 
 
 func _spawn_damage_number(type: String, diff: int) -> void:
@@ -210,7 +233,7 @@ func _spawn_damage_number(type: String, diff: int) -> void:
 func _update_bars(type: String, final_value: int) -> void:
 	var bars : BarsScreen = get_tree().get_first_node_in_group("bar_screens")
 	if bars:
-		bars.set_value_to(type, final_value)
+		bars.set_value(type, final_value)
 
 
 func _update_char_data(char_data: CharacterData, type: String, amount: int, is_heal: bool = false) -> Array[int]:

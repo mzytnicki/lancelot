@@ -1,8 +1,6 @@
 extends Node2D
 ## Le château du début.
 
-@onready var _bars_screen:  CanvasLayer = $BarsScreen
-
 @onready var _dialogue_box: CanvasLayer = $DialogueBox
 
 @onready var _lancelot:  CharacterBody2D = $YSortGroup/Lancelot
@@ -19,6 +17,42 @@ extends Node2D
 
 
 func _ready() -> void:
+	_start_scene()
+
+
+func _input(event: InputEvent) -> void:
+	# Temporary: press B to start a test battle
+	if event is InputEventKey and event.pressed and event.keycode == KEY_M:
+		SceneManager.change_scene("res://scenes/exterieur_charrette/exterieur_charrette.tscn")
+	if event is InputEventKey and event.pressed and event.keycode == KEY_D:
+		_lancelot.die()
+	if event is InputEventKey and event.pressed and event.keycode == KEY_B:
+		_start_test_battle()
+
+
+func _start_test_battle() -> void:
+	var hero_data := BattlerData.new()
+	hero_data.character_data = load("res://data/characters/lancelot.tres")
+	hero_data.is_player_controlled = true
+
+	var sword_data := EnemyData.new()
+	sword_data = load("res://data/enemies/sword.tres")
+
+	# Create a temporary enemy
+	var enemy_char := CharacterData.new()
+	enemy_char.display_name = "Slime"
+	enemy_char.max_hp = 30
+	enemy_char.attack = 5
+	enemy_char.defense = 2
+	enemy_char.speed = 4
+
+	var enemy_data: BattlerData = BattlerData.from_enemy(sword_data)
+
+	SceneManager.start_battle([hero_data], [enemy_data])
+
+
+
+func _start_scene() -> void:
 	_lancelot.start_interaction()
 	_knight_1.play_animation("idle_up", true)
 	_knight_2.play_animation("idle_up", true)
@@ -40,7 +74,7 @@ func _ready() -> void:
 	
 	_meleagant.go_to("left", 200, true)
 	await get_tree().create_timer(2).timeout
-	_dialogue_box.start_dialogue(_make_lines(
+	_dialogue_box.start_dialogue(DialogueLine.make_lines(
 		"Méléagant", [
 			"Arthur, je détiens des prisonniers de ton royaume et il n'est rien que tu puisses faire pour les libérer.   [i](Pressez 'X' pour continuer.)[/i]",
 			"Aujourd'hui, j'enlève la reine et tu n'y pourras rien non plus, à moins que l'un de tes chevaliers soit assez vaillant pour l'emporter sur moi."
@@ -52,7 +86,7 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	_keu.surprise()
 	await get_tree().create_timer(1).timeout
-	_dialogue_box.start_dialogue(_make_lines(
+	_dialogue_box.start_dialogue(DialogueLine.make_lines(
 		"Keu", [
 			"Arthur, Je suis le sénéchal: c'est à moi que revient l'honneur d'y aller."
 		]
@@ -61,7 +95,7 @@ func _ready() -> void:
 	await _keu.go_to("up", 30, true)
 	_keu.go_to("right", 400, true)
 	_gauvain.surprise()
-	_dialogue_box.start_dialogue(_make_lines(
+	_dialogue_box.start_dialogue(DialogueLine.make_lines(
 		"Gauvain", [
 			"Sire, nous ne pouvons pas laisser Keu y aller tout seul.",
 			"Tous les chevaliers du royaume de Gorre doivent se lancer au secours de la reine."
@@ -69,24 +103,6 @@ func _ready() -> void:
 	))
 	await _dialogue_box.dialogue_finished
 	SceneManager.change_scene("res://scenes/exterieur_charrette/exterieur_charrette.tscn")
-
-
-
-func _input(event: InputEvent) -> void:
-	# Temporary: press B to start a test battle
-	if event is InputEventKey and event.pressed and event.keycode == KEY_B:
-		#_bars_screen.set_prouesse_to(50)
-		_lancelot.modify_data("amour", 10, false)
-
-
-func _make_lines(speaker: String, texts: Array[String]) -> Array[DialogueLine]:
-	var lines: Array[DialogueLine] = []
-	for text in texts:
-		var line := DialogueLine.new()
-		line.speaker_name = speaker
-		line.text = text
-		lines.append(line)
-	return lines
 
 
 func _initialize_fresh_state() -> void:

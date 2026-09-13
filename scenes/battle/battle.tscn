@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://lcwmcggu0ggu" path="res://systems/battle/states/turn_start_state.gd" id="3_0yh6x"]
 [ext_resource type="PackedScene" uid="uid://dnxxjkkeg0dr8" path="res://ui/battle/target_select.tscn" id="3_mxe8n"]
 [ext_resource type="Script" uid="uid://8lq4kypat2nf" path="res://systems/battle/states/player_choice_state.gd" id="4_h0kxc"]
+[ext_resource type="PackedScene" uid="uid://c5s8yfmto3uhp" path="res://ui/battle/battle_message.tscn" id="4_icoan"]
+[ext_resource type="PackedScene" uid="uid://5wkehcwm8ltw" path="res://ui/bars/bars.tscn" id="4_mxe8n"]
 [ext_resource type="Script" uid="uid://dkd8lxtnxss6x" path="res://systems/battle/states/action_execute_state.gd" id="5_fh7rg"]
 [ext_resource type="Script" uid="uid://bkvtxacom8vd6" path="res://systems/battle/states/check_result_state.gd" id="6_pll4o"]
 [ext_resource type="Script" uid="uid://c8fv531e5rctp" path="res://systems/battle/states/victory_state.gd" id="7_py4tk"]
@@ -26,24 +28,24 @@ color = Color(0.42358288, 0.42358288, 0.5370987, 1)
 [node name="PartyPositions" type="Node2D" parent="." unique_id=1309767635]
 
 [node name="PartySlot0" type="Marker2D" parent="PartyPositions" unique_id=1456775892]
-position = Vector2(240, 60)
+position = Vector2(400, 160)
 
 [node name="PartySlot1" type="Marker2D" parent="PartyPositions" unique_id=2095263630]
-position = Vector2(240, 120)
+position = Vector2(400, 220)
 
 [node name="PartySlot2" type="Marker2D" parent="PartyPositions" unique_id=1483360108]
-position = Vector2(240, 180)
+position = Vector2(400, 280)
 
 [node name="EnemyPositions" type="Node2D" parent="." unique_id=1839528512]
 
 [node name="EnemySlot0" type="Marker2D" parent="EnemyPositions" unique_id=1459224458]
-position = Vector2(80, 60)
+position = Vector2(80, 160)
 
 [node name="EnemySlot1" type="Marker2D" parent="EnemyPositions" unique_id=271368786]
-position = Vector2(80, 120)
+position = Vector2(80, 220)
 
 [node name="EnemySlot2" type="Marker2D" parent="EnemyPositions" unique_id=716574398]
-position = Vector2(80, 180)
+position = Vector2(80, 280)
 
 [node name="BattleUI" type="CanvasLayer" parent="." unique_id=1184219409]
 layer = 10
@@ -53,6 +55,11 @@ visible = false
 
 [node name="TargetSelect" parent="BattleUI" unique_id=1023220926 instance=ExtResource("3_mxe8n")]
 visible = false
+
+[node name="BattleMessage" parent="BattleUI" unique_id=1806967787 instance=ExtResource("4_icoan")]
+visible = false
+
+[node name="BarsScreen" parent="." unique_id=1827411416 instance=ExtResource("4_mxe8n")]
 
 [node name="BattleStateMachine" type="Node" parent="." unique_id=398084297]
 script = ExtResource("1_ffvsa")

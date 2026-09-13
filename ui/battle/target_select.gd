@@ -17,7 +17,7 @@ func show_targets(targets: Array[BattlerData]) -> void:
 
 	for target in targets:
 		var button := Button.new()
-		button.text = target.character_data.display_name + " (HP: " + str(target.current_hp) + ")"
+		button.text = target.character_data.display_name + " (Prouesse: " + str(target.current_prouesse) + ")"
 		button.pressed.connect(func() -> void: target_selected.emit(target))
 		_target_list.add_child(button)
 

@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://dkmdmrcakf5pg" path="res://data/npcs/arthur/arthur.tres" id="8_swktt"]
 [ext_resource type="PackedScene" uid="uid://dtcvnfdvt8ik6" path="res://player/player.tscn" id="9_o0iq3"]
 [ext_resource type="Resource" uid="uid://db5saaov7qlrj" path="res://data/npcs/knight_1/knight_1.tres" id="10_1kvbe"]
-[ext_resource type="PackedScene" uid="uid://5wkehcwm8ltw" path="res://ui/bars/bars.tscn" id="10_shcq8"]
 [ext_resource type="Resource" uid="uid://cxjaaln5o8djr" path="res://data/npcs/knight_2/knight_2.tres" id="11_3si82"]
 [ext_resource type="Resource" uid="uid://cgjawe3f63c11" path="res://data/npcs/dame_1/dame_1.tres" id="11_b2sg0"]
 [ext_resource type="Resource" uid="uid://i0tchojm3mt6" path="res://data/npcs/dame_2/dame_2.tres" id="13_0lvdi"]
@@ -101,7 +100,7 @@ position = Vector2(466, 283)
 npc_data = ExtResource("13_0lvdi")
 speed = 200.0
 
-[node name="DialogueBox" parent="." unique_id=757804912 instance=ExtResource("5_swktt")]
+[node name="default" type="Marker2D" parent="." unique_id=1405575678 groups=["spawn_points"]]
+position = Vector2(363, 249)
 
-[node name="BarsScreen" parent="." unique_id=1827411416 groups=["bar_screens"] instance=ExtResource("10_shcq8")]
-visible = false
+[node name="DialogueBox" parent="." unique_id=757804912 instance=ExtResource("5_swktt")]

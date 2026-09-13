@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0lug6u0mi5sl"]
 
 [ext_resource type="Script" uid="uid://c3jmxlxdiq5lj" path="res://player/player.gd" id="1_kfa8f"]
-[ext_resource type="SpriteFrames" uid="uid://sionevnbkbje" path="res://player/noarmor_sprite_frames.tres" id="2_kfa8f"]
+[ext_resource type="SpriteFrames" uid="uid://sionevnbkbje" path="res://player/no_armor_sprite_frames.tres" id="2_kfa8f"]
 [ext_resource type="Texture2D" uid="uid://bmaisqt77pqie" path="res://sprites/sword.png" id="3_x15lg"]
 [ext_resource type="Texture2D" uid="uid://cran006mtxpcg" path="res://sprites/heart.png" id="4_hohov"]
 [ext_resource type="Texture2D" uid="uid://d1v63f0rxvlfo" path="res://sprites/crown.png" id="5_eqs7i"]

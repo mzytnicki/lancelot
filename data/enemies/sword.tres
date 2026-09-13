@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://f7buevhj7s5a"]
+
+[ext_resource type="SpriteFrames" uid="uid://8aejh6vh8q8d" path="res://data/npcs/sword/sprite_frames.tres" id="1_d2kr8"]
+[ext_resource type="Script" uid="uid://do4h44doe7x7e" path="res://resources/enemy_data.gd" id="1_dlhp1"]
+
+[resource]
+script = ExtResource("1_dlhp1")
+id = "sword"
+display_name = "Lance Enflammée"
+animation = ExtResource("1_d2kr8")
+metadata/_custom_type_script = "uid://do4h44doe7x7e"

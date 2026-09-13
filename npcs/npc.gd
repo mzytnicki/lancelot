@@ -103,7 +103,11 @@ func _face_player() -> void:
 
 func _face_something(direction: Vector2) -> void:
 	var dir_name := _direction_to_string(direction - _sprite.global_position)
-	var idle_anim := "idle_" + dir_name
+	face_direction(dir_name)
+
+
+func face_direction(direction: String) -> void:
+	var idle_anim := "idle_" + direction
 	if _sprite.sprite_frames and _sprite.sprite_frames.has_animation(idle_anim):
 		_sprite.play(idle_anim)
 

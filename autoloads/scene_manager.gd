@@ -65,7 +65,6 @@ func _place_player_at_spawn() -> void:
 	push_warning("SceneManager: no spawn point '%s' and no 'default' in %s; player position unchanged." % [_target_spawn_point, _target_scene_path])
 
 
-#func start_battle(encounter_data: Dictionary) -> void:
 func start_battle(party_data: Array[BattlerData], enemy_data: Array[BattlerData]) -> void:
 	if _is_transitioning:
 		return

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bfc1dqr6l8wxg"]
 
+[ext_resource type="Script" uid="uid://c5bsw6aheb5xe" path="res://ui/game_over/game_over.gd" id="1_ns3eh"]
+
 [node name="GameOver" type="Control" unique_id=863386341]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ns3eh")
 
 [node name="VBox" type="VBoxContainer" parent="." unique_id=639314243]
 layout_mode = 1
@@ -31,14 +34,12 @@ text = "Game Over"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="RetryButton" type="Button" parent="VBox/Spacer" unique_id=1489401797]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="RetryButton" type="Button" parent="VBox" unique_id=1489401797]
+layout_mode = 2
 text = "Load last save"
 
-[node name="TitleButton" type="Button" parent="VBox/Spacer" unique_id=357826123]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="TitleButton" type="Button" parent="VBox" unique_id=357826123]
+layout_mode = 2
 text = "Return to Title"
+
+[node name="default" type="Marker2D" parent="." unique_id=1884824750 groups=["spawn_points"]]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c5s8yfmto3uhp"]
+
+[ext_resource type="Script" uid="uid://dbmqhf60md6tn" path="res://ui/battle/battle_message.gd" id="1_tqi3x"]
+
+[node name="BattleMessage" type="PanelContainer" unique_id=1806967787]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_tqi3x")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1174059553]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1591093796]
+layout_mode = 2

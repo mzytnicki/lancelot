@@ -26,7 +26,7 @@ position_smoothing_enabled = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=857989652]
 sprite_frames = ExtResource("2_qjkh3")
-animation = &"idle_down"
+animation = &"dying"
 
 [node name="InteractRay" type="RayCast2D" parent="." unique_id=861273947]
 target_position = Vector2(0, 70)

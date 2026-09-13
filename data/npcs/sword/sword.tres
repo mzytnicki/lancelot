@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://dr5iuif7abh4u"]
+
+[ext_resource type="Script" uid="uid://bg5xnupa8tknt" path="res://resources/dialogue_line.gd" id="1_i5ii3"]
+[ext_resource type="Script" uid="uid://darqqnngkoaay" path="res://resources/npc_data.gd" id="2_yxfcb"]
+[ext_resource type="SpriteFrames" uid="uid://8aejh6vh8q8d" path="res://data/npcs/sword/sprite_frames.tres" id="3_yxfcb"]
+
+[resource]
+script = ExtResource("2_yxfcb")
+id = "sword"
+display_name = "Lance Magique"
+sprite_frames = ExtResource("3_yxfcb")
+metadata/_custom_type_script = "uid://darqqnngkoaay"

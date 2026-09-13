@@ -33,10 +33,10 @@ func _execute_attack(attacker: BattlerData, target: BattlerData) -> void:
 
 func _execute_defend(battler: BattlerData) -> void:
 	battler.defense_boost = battler.current_defense  # Double defense for one turn
-	print(battler.character_data.display_name + " defends!")
+	battle_manager.set_message(battler.character_data.display_name + " se défend !")
 
 
-func _execute_item(user: BattlerData, target: BattlerData, item: ItemData) -> void:
+func _execute_item(_user: BattlerData, target: BattlerData, item: ItemData) -> void:
 	if not item:
 		return
 	var changed := false
@@ -80,11 +80,23 @@ func _play_attack_animation(attacker: BattlerData) -> void:
 	var direction := -1.0 if attacker.is_player_controlled else 1.0
 	var original_pos: Vector2 = sprite.position
 
+	var animation: AnimatedSprite2D = sprite.get_node("Animation")
+	if animation:
+		if attacker.is_player_controlled:
+			animation.play("attack_left")
+		else:
+			animation.play("attack_right")
+
 	var tween := create_tween()
-	tween.tween_property(sprite, "position:x", original_pos.x + 30.0 * direction, 0.15)
+	tween.tween_property(sprite, "position:x", original_pos.x + 250.0 * direction, 0.5)
 	tween.tween_interval(0.1)
-	tween.tween_property(sprite, "position:x", original_pos.x, 0.15)
+	tween.tween_property(sprite, "position:x", original_pos.x, 0.5)
 	await tween.finished
+	if animation:
+		if attacker.is_player_controlled:
+			animation.play("idle_left")
+		else:
+			animation.play("idle_right")
 
 
 func _find_battler_sprite(battler: BattlerData) -> Node2D:

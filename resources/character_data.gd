@@ -4,6 +4,7 @@ class_name CharacterData
 
 @export var id: String = ""
 @export var display_name: String = ""
+@export var animation: SpriteFrames
 @export var portrait: Texture2D
 @export var overworld_sprite: SpriteFrames
 
@@ -26,12 +27,13 @@ class_name CharacterData
 @export var speed_growth: int = 1
 
 # Runtime state (set in code, not in the Inspector)
+# "0" means unitialized; to be dynamically initialized by max value
 var current_xp: int = 0
 var current_hp: int = 0  # Tracks HP between battles
 var current_mp: int = 0  # Tracks MP between battles
-var current_prouesse: int = 100
-var current_amour: int = 100
-var current_courtoisie: int = 100
+var current_prouesse:   int = 0
+var current_amour:      int = 0
+var current_courtoisie: int = 0
 
 var equipped_weapon: ItemData = null
 var equipped_armor: ItemData = null
@@ -67,6 +69,10 @@ func level_up() -> Dictionary:
 	defense += gains.defense
 	speed += gains.speed
 	return gains
+
+
+func grant_prouesse(prouesse: int) -> void:
+	current_prouesse += prouesse
 
 
 func grant_xp(xp: int) -> Array[Dictionary]:

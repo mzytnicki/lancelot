@@ -5,7 +5,7 @@ static func choose_enemy_action(
 	battler: BattlerData,
 	enemy_data: EnemyData,
 	party: Array[BattlerData],
-	allies: Array[BattlerData],
+	_allies: Array[BattlerData],
 ) -> Dictionary:
 	match enemy_data.ai_type:
 		EnemyData.AIType.AGGRESSIVE:

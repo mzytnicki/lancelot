@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _on_new_game() -> void:
 	_initialize_fresh_state()
-	SceneManager.change_scene("res://scenes/willowbrook/willowbrook.tscn")
+	SceneManager.change_scene("res://scenes/chateau/chateau.tscn")
 
 
 func _on_continue() -> void:
@@ -65,14 +65,17 @@ func _initialize_fresh_state() -> void:
 
 	# Reset party to just the hero
 	PartyManager.from_save_data({members = []})
-	var aiden := ResourceLoader.load(
-		"res://data/characters/aiden.tres", "", ResourceLoader.CACHE_MODE_IGNORE,
+	var lancelot := ResourceLoader.load(
+		"res://data/characters/lancelot.tres", "", ResourceLoader.CACHE_MODE_IGNORE,
 	) as CharacterData
-	if aiden:
-		aiden.current_hp = aiden.max_hp
-		aiden.current_mp = aiden.max_mp
-		aiden.current_xp = 0
-		PartyManager.add_member(aiden)
+	if lancelot:
+		lancelot.current_mp         = lancelot.max_mp
+		lancelot.current_xp         = 0
+		lancelot.current_amour      = 50
+		lancelot.current_courtoisie = 50
+		lancelot.current_prouesse   = 50
+		
+		PartyManager.add_member(lancelot)
 
 	# Reset quests
 	QuestManager.from_save_data({active = [], completed = [], turned_in = []})
