@@ -17,8 +17,8 @@ jobs:
     container:
       image: barichello/godot-ci:4.7.1
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout 🛎️
+        uses: actions/checkout@v6
 
       - name: Move export templates into position
         run: |
@@ -28,7 +28,7 @@ jobs:
       - name: Create staging directory
         run: mkdir -v -p build/web
 
-      - name: Build
+      - name: Build 🔧
         run: godot -v --export-release --headless "Web" build/web/index.html
 
       - name: Add coi-service-worker
@@ -42,12 +42,13 @@ jobs:
         with:
           name: web
           path: build/web
-      # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
+
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
+
       - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main # The branch the action should deploy to.
