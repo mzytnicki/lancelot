@@ -110,6 +110,7 @@ func face_direction(direction: String) -> void:
 	var idle_anim := "idle_" + direction
 	if _sprite.sprite_frames and _sprite.sprite_frames.has_animation(idle_anim):
 		_sprite.play(idle_anim)
+	_facing_direction = _direction_from_string(direction)
 
 
 func _direction_to_string(direction: Vector2) -> String:

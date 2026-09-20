@@ -183,7 +183,7 @@ func modify_data(type: String, amount: int, is_heal: bool = false) -> void:
 func die() -> void:
 	set_disabled(true)
 	await get_tree().create_timer(2).timeout
-	SceneManager.change_scene("res://scenes/dying/dying.tscn")
+	SceneManager.change_scene("res://scenes/cutscenes/dying/dying.tscn")
 
 
 func die_animation() -> void:

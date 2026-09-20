@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://upmmed8lfuwt"]
 
 [ext_resource type="PackedScene" uid="uid://dtcvnfdvt8ik6" path="res://player/player.tscn" id="1_a6k5i"]
-[ext_resource type="Script" uid="uid://b2uu1ji4wgpwf" path="res://scenes/dying/dying.gd" id="2_6wstv"]
-[ext_resource type="TileSet" uid="uid://bepm0ykunivu6" path="res://scenes/dying/tileset.tres" id="2_gmho3"]
+[ext_resource type="Script" uid="uid://b2uu1ji4wgpwf" path="res://scenes/cutscenes/dying/dying.gd" id="2_6wstv"]
+[ext_resource type="TileSet" uid="uid://bepm0ykunivu6" path="res://scenes/cutscenes/dying/tileset.tres" id="2_gmho3"]
 
 [node name="Node2D" type="Node2D" unique_id=175476248]
 script = ExtResource("2_6wstv")

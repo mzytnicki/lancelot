@@ -105,6 +105,7 @@ z_index = 2
 y_sort_enabled = true
 position = Vector2(2749, 3094)
 npc_data = ExtResource("14_u52vr")
+speed = 200.0
 
 [node name="Area2DKeu" type="Area2D" parent="." unique_id=558705759]
 script = ExtResource("8_hrsq7")

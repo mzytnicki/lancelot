@@ -11,11 +11,16 @@ extends Node2D
 @onready var _night_rect:    CanvasLayer     = $Night
 @onready var _window_area_1: Area2D          = $WindowArea_1
 @onready var _window_area_2: Area2D          = $WindowArea_2
+@onready var _door_area:     Area2D          = $DoorArea
 @onready var _window_mark_1: Marker2D        = $Window_1
 @onready var _window_mark_2: Marker2D        = $Window_2
+@onready var _dame_1_enter:  Marker2D        = $Dame_1_enter
+@onready var _door:          Node2D          = $YSortGroup/ArchedDoor
 
 
 static var _scene_number: int = 0
+
+var _dame_thanked : bool = false
 
 
 func _input(event: InputEvent) -> void:
@@ -25,13 +30,23 @@ func _input(event: InputEvent) -> void:
 			SceneManager.change_scene("res://scenes/chateau_2/chateau_2.tscn", "SmallBed")
 		elif _scene_number == 2:
 			SceneManager.change_scene("res://scenes/chateau_2/chateau_2.tscn", "SmallBed")
+		elif _scene_number == 3:
+			SceneManager.change_scene("res://scenes/chateau_2/chateau_2.tscn", "BeforeBed")
+		else:
+			SceneManager.change_scene("res://scenes/exterieur_dame/exterieur_dame.tscn")
+
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for npc in get_tree().get_nodes_in_group("npcs"):
+		npc.interacted.connect(_on_npc_interacted)
+
 	_window_area_1.body_entered.connect(_on_window_enter.bind(_window_mark_1.global_position))
 	_window_area_2.body_entered.connect(_on_window_enter.bind(_window_mark_2.global_position))
+	_door_area.body_entered.connect(_on_door_enter)
+
 	match _scene_number:
 		0:
 			_entry_scene()
@@ -39,8 +54,9 @@ func _ready() -> void:
 			_night_scene()
 		2:
 			_window_scene()
+		3:
+			_leaving()
 	_scene_number += 1
-
 
 
 func _night_scene():
@@ -66,6 +82,7 @@ func _night_scene():
 	var enemy_data: BattlerData = BattlerData.from_enemy(sword_data)
 
 	SceneManager.start_battle([hero_data], [enemy_data])
+
 
 func _window_scene():
 	_lancelot.change_sprites("no_armor")
@@ -155,3 +172,69 @@ func _on_window_enter(body: Node2D, pos: Vector2) -> void:
 		_lancelot.go_to_point(pos)
 		await get_tree().create_timer(1).timeout
 		SceneManager.change_scene("res://scenes/cutscenes/guenievre.tscn")
+
+
+func _leaving() -> void:
+	_lancelot.change_sprites("no_armor")
+	$BedArea.queue_free()
+	
+	# Hide unused characters
+	_dame_2.queue_free()
+	_dame_3.queue_free()
+	_dame_1.visible = false
+	_dame_1.global_position = Vector2.ZERO
+
+
+func _on_npc_interacted(npc: NPC) -> void:
+	if npc.npc_data.id == "gauvain_noarmor" and _scene_number == 4:
+		_lancelot.start_interaction()
+		_dialogue_box.start_dialogue(DialogueLine.make_lines(
+			"Le chevalier", [
+				"Vite, repartons à la recherche de la reine. Nous n'avons que trop tardé.",
+			]
+		))
+		await _dialogue_box.dialogue_finished
+		_dialogue_box.start_dialogue(DialogueLine.make_lines(
+			"Gauvain", [
+				"Comment ferez-vous ? Le nain est reparti. Vous n'avez pas de cheval.",
+			]
+		))
+		await _dialogue_box.dialogue_finished
+		_dame_1.global_position = _dame_1_enter.global_position
+		_dame_1.visible = true
+		await _dame_1.go_to("up", 170, true)
+		_lancelot.face_direction("down")
+		_lancelot.start_interaction()
+		await get_tree().create_timer(1).timeout
+		_dialogue_box.start_dialogue(DialogueLine.make_lines(
+			"La Demoiselle", [
+				"Je vous offre un cheval et une lance. Vous pouvez poursuivre votre quête.",
+			]
+		))
+		await _dialogue_box.dialogue_finished
+		_scene_number += 1
+		_lancelot.end_interaction()
+		_door.open()
+	elif npc.npc_data.id == "dame_3" and _scene_number == 5:
+		_lancelot.start_interaction()
+		_dialogue_box.start_dialogue(DialogueLine.make_lines(
+			"Le chevalier", [
+				"Demoiselle, soyez vivement remerciée de votre accueil et de votre générosité.",
+			]
+		))
+		await _dialogue_box.dialogue_finished
+		_lancelot.modify_data("amour", 10, true)
+		await get_tree().create_timer(1).timeout
+		_lancelot.modify_data("courtoisie", 40, false)
+		await get_tree().create_timer(1).timeout
+		_lancelot.end_interaction()
+		_dame_thanked = true
+
+
+func _on_door_enter(body: Node2D) -> void:
+	if body.is_in_group("player") and _scene_number == 5:
+		if not _dame_thanked:
+			_lancelot.start_interaction()
+			_lancelot.modify_data("courtoisie", 20, false)
+			await get_tree().create_timer(1).timeout
+		SceneManager.change_scene("res://scenes/exterieur_dame/exterieur_dame.tscn")

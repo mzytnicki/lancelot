@@ -24,7 +24,7 @@ color = Color(0.3491902, 0.3491902, 0.60038817, 1)
 layout_mode = 0
 offset_right = 94.0
 offset_bottom = 23.0
-text = "Crystal Saga"
+text = "Le Chevalier à la Charrette"
 
 [node name="MenuContainer" type="VBoxContainer" parent="." unique_id=1085627695]
 layout_mode = 1
@@ -42,15 +42,15 @@ grow_vertical = 2
 
 [node name="NewGameButton" type="Button" parent="MenuContainer" unique_id=765836625]
 layout_mode = 2
-text = "New Game"
+text = "Charger"
 
 [node name="ContinueButton" type="Button" parent="MenuContainer" unique_id=851308894]
 layout_mode = 2
-text = "Continue"
+text = "Continuer"
 
 [node name="SettingsButton" type="Button" parent="MenuContainer" unique_id=133867839]
 layout_mode = 2
-text = "Settings"
+text = "Paramètres"
 
 [node name="VersionLabel" type="Label" parent="MenuContainer" unique_id=1257884907]
 layout_mode = 2

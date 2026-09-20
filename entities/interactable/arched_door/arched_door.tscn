@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://8i4tpcrugq6a"]
+
+[ext_resource type="Script" uid="uid://cvwv3jktyppme" path="res://entities/interactable/arched_door/arched_door.gd" id="1_f6qsv"]
+[ext_resource type="SpriteFrames" uid="uid://bh35xa3ibxa44" path="res://entities/interactable/arched_door/sprite_frames.tres" id="1_t0xmd"]
+[ext_resource type="Texture2D" uid="uid://cv67b5hentyv5" path="res://entities/interactable/arched_door/Arched Doorway A Shadows.png" id="1_w3wes"]
+
+[node name="ArchedDoor" type="Node2D" unique_id=249353201]
+script = ExtResource("1_f6qsv")
+
+[node name="Shade" type="Sprite2D" parent="." unique_id=860846532]
+position = Vector2(1, 17)
+texture = ExtResource("1_w3wes")
+hframes = 2
+vframes = 2
+
+[node name="Door" type="AnimatedSprite2D" parent="." unique_id=1867482081]
+sprite_frames = ExtResource("1_t0xmd")
+animation = &"open"
