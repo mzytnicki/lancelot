@@ -8,6 +8,10 @@ extends Node2D
 @onready var _dialogue_box: CanvasLayer     = $DialogueBox
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_M:
+		SceneManager.change_scene("res://scenes/gué/gué.tscn")
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -93,3 +97,5 @@ func _on_dame_meet(body: Node2D) -> void:
 			await _dialogue_box.dialogue_finished
 		_gauvain.go_to("down", 300, false)
 		_lancelot.go_to_point($LancelotExit.global_position)
+		await get_tree().create_timer(3).timeout
+		SceneManager.change_scene("res://scenes/gué/gué.tscn")

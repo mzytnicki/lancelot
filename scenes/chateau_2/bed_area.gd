@@ -35,7 +35,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var lines := DialogueLine.make_lines(
 			"La Demoiselle", [
 				"Il est interdit à tout homme qui n'aurait pas mérité de s'y étendre.",
-				"Il ne peut être occupé que par un chevalier valereux.",
+				"Il ne peut être occupé que par un chevalier valeureux.",
 				"Vous, qui êtes monté dans la charrette, vous pouvez moins que quiconque y prétendre."
 			]
 		)

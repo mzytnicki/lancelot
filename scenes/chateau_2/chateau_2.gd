@@ -24,7 +24,6 @@ var _dame_thanked : bool = false
 
 
 func _input(event: InputEvent) -> void:
-	# Temporary: press B to start a test battle
 	if event is InputEventKey and event.pressed and event.keycode == KEY_M:
 		if _scene_number == 1:
 			SceneManager.change_scene("res://scenes/chateau_2/chateau_2.tscn", "SmallBed")
@@ -118,7 +117,7 @@ func _entry_scene():
 	await get_tree().create_timer(1).timeout
 	_dialogue_box.start_dialogue_lines(
 		"La Demoiselle", [
-			"Quel est le crime que votre companon a commis ?",
+			"Quel est le crime que votre companion a commis ?",
 		]
 	)
 	await _dialogue_box.dialogue_finished
@@ -158,7 +157,7 @@ func _entry_scene():
 	await get_tree().create_timer(1).timeout
 	_dialogue_box.start_dialogue_lines(
 		"La Demoiselle", [
-			"Je vous conduits à vos lits.",
+			"Je vous conduis à vos lits.",
 		]
 	)
 	await _dialogue_box.dialogue_finished

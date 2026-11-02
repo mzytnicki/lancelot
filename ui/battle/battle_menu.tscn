@@ -19,20 +19,20 @@ layout_mode = 2
 
 [node name="AttackButton" type="Button" parent="MarginContainer/ActionList" unique_id=650686481]
 layout_mode = 2
-text = "Attack"
+text = "Attaque"
 
 [node name="MagicButton" type="Button" parent="MarginContainer/ActionList" unique_id=139429258]
 layout_mode = 2
-text = "Magic"
+text = "Magie"
 
 [node name="DefendButton" type="Button" parent="MarginContainer/ActionList" unique_id=715163799]
 layout_mode = 2
-text = "Defend"
+text = "Defense"
 
 [node name="ItemButton" type="Button" parent="MarginContainer/ActionList" unique_id=2113284857]
 layout_mode = 2
-text = "Item"
+text = "Objet"
 
 [node name="FleeButton" type="Button" parent="MarginContainer/ActionList" unique_id=1183860215]
 layout_mode = 2
-text = "Flee"
+text = "Fuir"

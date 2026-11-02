@@ -33,7 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 		_lancelot.start_interaction()
 		_dialogue_box.start_dialogue(DialogueLine.make_lines(
 			"Le Chevalier", [
-				"Que vous est-il arrivé ?",
+				"Keu, que vous est-il arrivé ?",
 			]
 		))
 		await _dialogue_box.dialogue_finished

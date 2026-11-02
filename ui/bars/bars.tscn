@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://5wkehcwm8ltw"]
 
 [ext_resource type="Script" uid="uid://vx50hd8fj1kb" path="res://ui/bars/bars.gd" id="1_xvf0r"]
-[ext_resource type="Texture2D" uid="uid://bmaisqt77pqie" path="res://sprites/sword.png" id="2_sov4n"]
-[ext_resource type="Texture2D" uid="uid://cran006mtxpcg" path="res://sprites/heart.png" id="3_01gjb"]
-[ext_resource type="Texture2D" uid="uid://d1v63f0rxvlfo" path="res://sprites/crown.png" id="4_8phyl"]
+[ext_resource type="Texture2D" uid="uid://bmaisqt77pqie" path="res://sprites/other/sword.png" id="2_sov4n"]
+[ext_resource type="Texture2D" uid="uid://cran006mtxpcg" path="res://sprites/other/heart.png" id="3_01gjb"]
+[ext_resource type="Texture2D" uid="uid://d1v63f0rxvlfo" path="res://sprites/other/crown.png" id="4_8phyl"]
 
 [node name="BarsScreen" type="CanvasLayer" unique_id=1827411416]
 script = ExtResource("1_xvf0r")

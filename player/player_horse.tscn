@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c3jmxlxdiq5lj" path="res://player/player.gd" id="1_eitxn"]
 [ext_resource type="SpriteFrames" uid="uid://csr8djrdux5rg" path="res://player/horse_sprite_frames.tres" id="2_eitxn"]
-[ext_resource type="Texture2D" uid="uid://bmaisqt77pqie" path="res://sprites/sword.png" id="3_5c8ue"]
-[ext_resource type="Texture2D" uid="uid://cran006mtxpcg" path="res://sprites/heart.png" id="4_28yfy"]
-[ext_resource type="Texture2D" uid="uid://d1v63f0rxvlfo" path="res://sprites/crown.png" id="5_ddydu"]
+[ext_resource type="Texture2D" uid="uid://bmaisqt77pqie" path="res://sprites/other/sword.png" id="3_5c8ue"]
+[ext_resource type="Texture2D" uid="uid://cran006mtxpcg" path="res://sprites/other/heart.png" id="4_28yfy"]
+[ext_resource type="Texture2D" uid="uid://d1v63f0rxvlfo" path="res://sprites/other/crown.png" id="5_ddydu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkrr"]
 size = Vector2(12, 8)

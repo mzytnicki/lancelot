@@ -44,7 +44,8 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(1).timeout
 		_dialogue_box.start_dialogue_lines(
 			"Gauvain", [
-				"La charette, c'est pour les condamnés. Il est hors de question que je me déshonore en montant dans un tel lieu.",
+				"La charrette, c'est pour les condamnés. Il est hors de question que je me déshonore en montant dans un tel lieu.",
+				"Ne le faites pas, chevalier !",
 			]
 		)
 		await _dialogue_box.dialogue_finished
@@ -96,7 +97,7 @@ func _on_body_entered(body: Node2D) -> void:
 				"Honte au chevalier de la charrette !",
 			]
 		)
-		_lancelot.modify_data("prouesse", 10, false)
+		_lancelot.modify_data("prouesse", 5, false)
 		await _dialogue_box.dialogue_finished
 
 		_lancelot.go_to_point(
@@ -115,7 +116,7 @@ func _on_body_entered(body: Node2D) -> void:
 				"Un chevalier criminel !",
 			]
 		)
-		_lancelot.modify_data("prouesse", 10, false)
+		_lancelot.modify_data("prouesse", 5, false)
 		await _dialogue_box.dialogue_finished
 
 		_lancelot.go_to_point(
@@ -133,7 +134,7 @@ func _on_body_entered(body: Node2D) -> void:
 				"Maudit soit le chevalier de la charrette !",
 			]
 		)
-		_lancelot.modify_data("prouesse", 10, false)
+		_lancelot.modify_data("prouesse", 5, false)
 		await _dialogue_box.dialogue_finished
 		
 		_lancelot.go_to_point(
