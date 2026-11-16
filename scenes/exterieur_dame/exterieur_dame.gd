@@ -71,7 +71,7 @@ func _on_dame_meet(body: Node2D) -> void:
 		await _dialogue_box.dialogue_finished
 		_dialogue_box.start_dialogue(DialogueLine.make_lines(
 			"La Demoiselle", [
-				"Deux chemins y mènent, égalemen très périlleux :",
+				"Deux chemins y mènent, également périlleux :",
 				"le Pont sous les Eaux, et le Pont de l'Épée, encore plus dangereux que le premier.",
 			]
 		))
@@ -87,7 +87,7 @@ func _on_dame_meet(body: Node2D) -> void:
 		_dialogue_box.start_dialogue(lines)
 		choice = await _dialogue_box.choice_made
 		if choice == 1:
-			_lancelot.modify_data("courtoisie", 20, true)
+			_lancelot.modify_data("courtoisie", 5, true)
 			await get_tree().create_timer(1).timeout
 			_dialogue_box.start_dialogue(DialogueLine.make_lines(
 				"Gauvain", [
