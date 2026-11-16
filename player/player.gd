@@ -191,6 +191,11 @@ func die_animation() -> void:
 	sprite.play("dying")
 
 
+func getup_animation() -> void:
+	set_disabled(true)
+	sprite.play("get_up")
+
+
 func _spawn_damage_number(type: String, diff: int) -> void:
 	if diff == 0:
 		return
