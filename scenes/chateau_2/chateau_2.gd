@@ -117,7 +117,7 @@ func _entry_scene():
 	await get_tree().create_timer(1).timeout
 	_dialogue_box.start_dialogue_lines(
 		"La Demoiselle", [
-			"Quel est le crime que votre companion a commis ?",
+			"Quel est le crime que votre compagnon a commis ?",
 		]
 	)
 	await _dialogue_box.dialogue_finished
@@ -222,9 +222,7 @@ func _on_npc_interacted(npc: NPC) -> void:
 			]
 		))
 		await _dialogue_box.dialogue_finished
-		_lancelot.modify_data("amour", 10, true)
-		await get_tree().create_timer(1).timeout
-		_lancelot.modify_data("courtoisie", 40, false)
+		_lancelot.modify_data("courtoisie", 5, true)
 		await get_tree().create_timer(1).timeout
 		_lancelot.end_interaction()
 		_dame_thanked = true

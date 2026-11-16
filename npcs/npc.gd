@@ -9,7 +9,7 @@ signal walk_done
 
 
 @export var npc_data: NPCData
-@export var speed: float = 200.0
+@export var speed: float = 150.0
 
 var _current_state:    State   = State.IDLE
 var _player_in_range:  bool    = false
