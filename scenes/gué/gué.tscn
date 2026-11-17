@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dhyo6lq1j3jna" path="res://npcs/npc.tscn" id="6_dgiu6"]
 [ext_resource type="Resource" uid="uid://dr5iuif7abh4u" path="res://data/npcs/sword/sword.tres" id="7_rexux"]
 [ext_resource type="Resource" uid="uid://db5saaov7qlrj" path="res://data/npcs/knight_1/knight_1.tres" id="8_rexux"]
+[ext_resource type="PackedScene" uid="uid://cncoy3nnni1cp" path="res://ui/dialogue_box/dialogue_box.tscn" id="9_nsvk8"]
+[ext_resource type="PackedScene" uid="uid://5wkehcwm8ltw" path="res://ui/bars/bars.tscn" id="10_atd47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pllip"]
 shader = ExtResource("3_a354d")
@@ -139,3 +141,7 @@ npc_data = ExtResource("7_rexux")
 visible = false
 position = Vector2(849, 417)
 npc_data = ExtResource("8_rexux")
+
+[node name="DialogueBox" parent="." unique_id=757804912 instance=ExtResource("9_nsvk8")]
+
+[node name="BarsScreen" parent="." unique_id=1827411416 groups=["bar_screens"] instance=ExtResource("10_atd47")]

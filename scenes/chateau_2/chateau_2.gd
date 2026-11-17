@@ -71,7 +71,6 @@ func _night_scene():
 	_sword.play_animation("attack_right", true)
 	await get_tree().create_timer(1).timeout
 
-	
 	var hero_data := BattlerData.new()
 	hero_data.character_data = load("res://data/characters/lancelot.tres")
 	hero_data.is_player_controlled = true
